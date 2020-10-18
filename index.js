@@ -37,12 +37,20 @@ function handleMove(request, response) {
 
   console.log(gameData);
 
+
+
   var possibleMoves = ['up', 'down', 'left', 'right'];
-  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+  // var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+
+  let move = 'up';
+
+  if (gameData.you.head.y == 10) {
+    move = 'left';
+  }
 
   console.log('MOVE: ' + move)
   response.status(200).send({
-    move: 'up'
+    move: move
   });
 }
 
