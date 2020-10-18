@@ -33,20 +33,22 @@ function handleStart(request, response) {
 }
 
 function handleMove(request, response) {
-  var gameData = request.body
+  var gameData = request.body;
 
-  var possibleMoves = ['up', 'down', 'left', 'right']
-  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+  console.log(gameData);
+
+  var possibleMoves = ['up', 'down', 'left', 'right'];
+  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
 
   console.log('MOVE: ' + move)
   response.status(200).send({
-    move: move
-  })
+    move: 'up'
+  });
 }
 
 function handleEnd(request, response) {
-  var gameData = request.body
+  var gameData = request.body;
 
-  console.log('END')
-  response.status(200).send('ok')
+  console.log('END');
+  response.status(200).send('ok');
 }
