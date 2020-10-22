@@ -35,7 +35,7 @@ function handleStart(request, response) {
 function handleMove(request, response) {
   var gameData = request.body;
 
-  console.log(gameData);
+  // console.log(gameData);
 
 
 
