@@ -107,7 +107,7 @@ function handleMove(request, response) {
   
   let move = legalMoves[Math.floor(Math.random() * legalMoves.length)];
 
-  console.log('legalMoves were: ' + legalMoves);
+  console.log(`[${legalMoves}]`);
 
   console.log('MOVE: ' + move + '  TURN: ' + turn);
   response.status(200).send({
