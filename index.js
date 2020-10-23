@@ -77,6 +77,8 @@ function handleMove(request, response) {
   let prevMove = gameData.you.shout;
   let boardData = gameData.board;
   let head = gameData.you.head;
+  
+  let turn = gameData.turn;
 
   // Declare what the next coordinate of the head will be based on the move
   let nextHeadCoordinates = new Map();
@@ -105,7 +107,9 @@ function handleMove(request, response) {
   
   let move = legalMoves[Math.floor(Math.random() * legalMoves.length)];
 
-  console.log('MOVE: ' + move);
+  console.log('legalMoves were: ' + legalMoves);
+
+  console.log('MOVE: ' + move + '  TURN: ' + turn);
   response.status(200).send({
     move: move,
     shout: move
