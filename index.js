@@ -76,6 +76,7 @@ function handleMove(request, response) {
   // console.log(gameData);
   let prevMove = gameData.you.shout;
   let boardData = gameData.board;
+  let head = gameData.you.head;
 
   // Declare what the next coordinate of the head will be based on the move
   let nextHeadCoordinates = new Map();
