@@ -68,6 +68,20 @@ function willCollide(head, move , prevMove, board, body) {
     return true;
   }
 
+
+  // printing body and head for comparison & debugging
+
+  console.log(`head: {"x": ${head.x}, "y": ${head.y}}`);
+
+  
+  console.log('body: ');
+  for (const bodyCoord in body) {
+    console.log(`{"x": ${bodyCoord.x}, "y": ${bodyCoord.y}}`);
+  }
+
+  
+
+
   // avoiding opposite moves was basic self collision avoidance.
   // now for advanced collision avoidance for when the snake grows
 
@@ -79,7 +93,7 @@ function willCollide(head, move , prevMove, board, body) {
     }
   }
 
-  
+
   return false;
 
 }
