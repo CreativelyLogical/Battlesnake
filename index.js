@@ -73,7 +73,7 @@ function willCollide(head, move , prevMove, board, body) {
 
   console.log(`head: {"x": ${head.x}, "y": ${head.y}}`);
 
-  
+
   console.log('body: ');
   for (const bodyCoord in body) {
     console.log(`{"x": ${bodyCoord.x}, "y": ${bodyCoord.y}}`);
@@ -85,11 +85,12 @@ function willCollide(head, move , prevMove, board, body) {
   // avoiding opposite moves was basic self collision avoidance.
   // now for advanced collision avoidance for when the snake grows
 
-  for (const bodyCoord in body) {
+  for (let i = 0; i < body.length; i++) {
+    let bodyCoord = body[i];
     if (head.x == bodyCoord.x && head.y == bodyCoord.y) {
       // if head occupies the same space as a part of the snake's body in the game board,
       // then the snake will collide with its body i.e. a self collision will occur
-      return true
+      return true;
     }
   }
 
