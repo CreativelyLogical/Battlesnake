@@ -101,7 +101,7 @@ function handleMove(request, response) {
   let possibleMoves = ['up', 'down', 'left', 'right'];
   // var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
 
-  let legalMoves = possibleMoves.filter(move => !willCollide(nextHeadCoordinates(move), move, prevMove, boardData));
+  let legalMoves = possibleMoves.filter(move => !willCollide(nextHeadCoordinates[move], move, prevMove, boardData));
   
   let move = legalMoves[Math.floor(Math.random() * legalMoves.length)];
 
