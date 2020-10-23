@@ -37,10 +37,12 @@ function handleStart(request, response) {
   move: The move that will be examined to see if it will lead to a collision
   prevMove: The previous move of the snake
   board: Data about the game board (contains info about the board's height, width, etc...)
+  body: The body of the snake. Represented as an array of {x, y} coordinates, each coordinate
+        represents one piece of the snake occupying the game board
 
   Returns TRUE if the move will lead to a collision. Returns FALSE otherwise
 */
-function willCollide(head, move , prevMove, board) {
+function willCollide(head, move , prevMove, board, body) {
   // get the height & width of the game board
   let boardHeight = board.height;
   let boardWidth = board.width;
@@ -66,6 +68,18 @@ function willCollide(head, move , prevMove, board) {
     return true;
   }
 
+  // avoiding opposite moves was basic self collision avoidance.
+  // now for advanced collision avoidance for when the snake grows
+
+  for (const bodyCoord in body) {
+    if (head.x == bodyCoord.x && head.y == bodyCoord.y) {
+      // if head occupies the same space as a part of the snake's body in the game board,
+      // then the snake will collide with its body i.e. a self collision will occur
+      return true
+    }
+  }
+
+  
   return false;
 
 }
@@ -77,6 +91,7 @@ function handleMove(request, response) {
   let prevMove = gameData.you.shout;
   let boardData = gameData.board;
   let head = gameData.you.head;
+  let body = gameData.you.body;
   
   let turn = gameData.turn;
 
@@ -103,7 +118,7 @@ function handleMove(request, response) {
   let possibleMoves = ['up', 'down', 'left', 'right'];
   // var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
 
-  let legalMoves = possibleMoves.filter(move => !willCollide(nextHeadCoordinates[move], move, prevMove, boardData));
+  let legalMoves = possibleMoves.filter(move => !willCollide(nextHeadCoordinates[move], move, prevMove, boardData, body));
   
   let move = legalMoves[Math.floor(Math.random() * legalMoves.length)];
 
